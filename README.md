@@ -1,16 +1,16 @@
 # Final Exam (Chapters 6-11)
 
 ## Table of Contents 
-- [Code](code)
-    - [Chapter 6 Stacks and Queues](#chapter-6)
-    - [Chapter 7 Hash Tables](#chapter-7)
-    - [Chapter 8 Trees](#chapter-8)
-    - [Chapter 9 Balanced Trees](#chapter-9)
-    - [Chapter 10 Heaps and Treaps](#chapter-10)
-    - [Chapter 11 Sets](#chapter-11)
+- [Chapter 6 Stacks and Queues](#chapter-6)
+- [Chapter 7 Hash Tables](#chapter-7)
+- [Chapter 8 Trees](#chapter-8)
+- [Chapter 9 Balanced Trees](#chapter-9)
+- [Chapter 10 Heaps and Treaps](#chapter-10)
+- [Chapter 11 Sets](#chapter-11)
 
-## Code
-### Chapter 6
+## Chapter 6
+### Notes
+### Code
 <details>
 <summary> Stacks and Queues </summary>
 
@@ -203,7 +203,9 @@ class LinkedList {
 ```
 </details>
 
-### Chapter 7
+## Chapter 7
+### Notes
+### Code
 <details>
 <summary> Hash Tables </summary>
 
@@ -375,7 +377,9 @@ public class ChainingHashTable extends HashTable {
 
 </details>
 
-### Chapter 8
+## Chapter 8
+### Notes
+### Code
 <details>
 <summary> Trees</summary>
 
@@ -722,7 +726,9 @@ class BSTPrint {
 ```
 </details>
 
-### Chapter 9
+## Chapter 9
+### Notes
+### Code
 <details>
 <summary> Balanced Trees </summary>
 
@@ -1278,7 +1284,9 @@ class BSTPrint {
 ```
 </details>
 
-### Chapter 10
+## Chapter 10
+### Notes
+### Code
 <details>
 <summary> Heaps and Treaps </summary>
 
@@ -1479,7 +1487,9 @@ public class HeapsortDemo {
 ```
 </details>
 
-### Chapter 11
+## Chapter 11
+### Notes
+### Code
 <details>
 <summary> Sets </summary>
 
