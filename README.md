@@ -9,7 +9,7 @@
 - [Chapter 11 Sets](#chapter-11)
 
 ## Chapter 6
-### Notes
+
 ### Code
 <details>
 <summary> Stacks and Queues </summary>
@@ -203,8 +203,12 @@ class LinkedList {
 ```
 </details>
 
-## Chapter 7
+
+
 ### Notes
+
+## Chapter 7
+
 ### Code
 <details>
 <summary> Hash Tables </summary>
@@ -377,8 +381,9 @@ public class ChainingHashTable extends HashTable {
 
 </details>
 
-## Chapter 8
 ### Notes
+
+## Chapter 8
 ### Code
 <details>
 <summary> Trees</summary>
@@ -726,8 +731,9 @@ class BSTPrint {
 ```
 </details>
 
-## Chapter 9
 ### Notes
+
+## Chapter 9
 ### Code
 <details>
 <summary> Balanced Trees </summary>
@@ -1284,8 +1290,9 @@ class BSTPrint {
 ```
 </details>
 
-## Chapter 10
 ### Notes
+
+## Chapter 10
 ### Code
 <details>
 <summary> Heaps and Treaps </summary>
@@ -1487,8 +1494,9 @@ public class HeapsortDemo {
 ```
 </details>
 
-## Chapter 11
 ### Notes
+
+## Chapter 11
 ### Code
 <details>
 <summary> Sets </summary>
@@ -1778,3 +1786,5 @@ public class Set implements Iterable<Integer> {
 }
 ```
 </details>
+
+### Notes
