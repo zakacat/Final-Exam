@@ -796,7 +796,10 @@ In a binary tree each node has up to two children (left child and right child) o
   - **Complete:** All levels, except possibly the last level, contain all possible nodes and all nodes in the last level are as far left as possible.
   - **Perfect:** All internal nodes have 2 children and all leaf nodes are at the same level
 
-Traversal Methods 
+<details>
+<summary> Traversal Methods</summary>
+
+
  - **preOrder:**
 ```java
 public void preOrder(Node<T> node) {
@@ -863,6 +866,8 @@ public void inOrder(Node<T> node) {
 
    }
 ```
+
+</details>
 
 ## Chapter 9
 ### Code
