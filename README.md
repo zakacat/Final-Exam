@@ -206,6 +206,27 @@ class LinkedList {
 
 
 ### Notes
+Stack 
+- last in, first out (think stack of pancakes, add the new one to the top and eat it first)
+- push/pop happen at the same end
+- Operations
+   - **Push:** inserts item at top
+   - **Pop:** returns and removes from top
+   - **Peek:** returns without removing item at top
+   - **IsEmpty:** returns true if it's empty
+   - **GetLength:** returns number of items in stack
+- all operations O(1)
+
+Queue 
+- first in, first out (think line up, first to get there gets help first)
+- enqueue/dequeue happen at different ends 
+- Operations
+   - **Enqueue:** inserts item at end
+   - **Dequeue:** returns and removes from front
+   - **Peek:** returns without removing item at front 
+   - **IsEmpty:** returns true if it's empty
+   - **GetLength:** returns number of items in queue 
+- all operations O(1)
 
 ## Chapter 7
 
@@ -382,6 +403,26 @@ public class ChainingHashTable extends HashTable {
 </details>
 
 ### Notes
+Hash table is a data structure that stores items by mapping ot hashing items to a location in an array. Usually 
+O(1) for searching or (inserting/removing)
+
+Modulus Calc: use A(b/c) c must ne the same as divisor in question
+
+Collision Strategies:
+ - Chaining: 
+   - each bucket has a list of items 
+ - Open addressing: 
+   - looks for an empty bucket elsewhere in the table
+ - Linear Probing:  
+   - starts at the key's mapped bucket, and then linearly searches subsequent buckets until an empty bucket is found.
+ - Quadratic Probing:
+   - starts at the key's mapped bucket, and then quadratically searches subsequent buckets until an empty bucket is found
+   - (H + (c1) + (c2 • i^2)) mod(table size)
+ - Double Hashing:
+   - an open-addressing collision resolution technique that uses 2 different hash functions to compute bucket indices
+   - (h1(key) + i • h2(key)) mod(table size)
+
+
 
 ## Chapter 8
 ### Code
@@ -732,6 +773,96 @@ class BSTPrint {
 </details>
 
 ### Notes
+BST Trees
+ - **Successor:** The node that comes after in the BST ordering
+ - **Predecessor:** The node that comes before in the BST ordering
+ - Search worst case: [Log2N] + 1
+ - Search perfect case: [Log2N]
+ - Calc (ln x)/(ln 2)
+
+In a binary tree each node has up to two children (left child and right child) other definitions:
+ - **Leaf:** A tree node with no children
+ - **Internal Node:** A node with at least one child.
+ - **Parent:** A node with a child is said to be that child's parent. 
+ - **Ancestors:** include the node's parent, the parent's parent, etc., up to the tree's root.
+ - **Root:** The one tree node with no parent (the "top" node)
+ - **Edge:** The link from a node to a child
+ - **Depth:** The number of edges on the path from the root to the node. The root node thus has depth 0.
+ - **Level:** All nodes with the same depth
+ - **Height:** The largest depth of any node. A tree with just one node has height 0.
+
+ Special types of Binary Trees
+  - **Full:** Every node contains 0 or 2 children.
+  - **Complete:** All levels, except possibly the last level, contain all possible nodes and all nodes in the last level are as far left as possible.
+  - **Perfect:** All internal nodes have 2 children and all leaf nodes are at the same level
+
+Traversal Methods 
+ - **preOrder:**
+```java
+public void preOrder(Node<T> node) {
+      if (node == null) {
+         return;
+      } else {
+         System.out.print(node.key + " ");
+         preOrder(node.left);
+         preOrder(node.right);
+
+      }
+
+   }
+ ```
+ - **postOrder:**
+```java
+  public void postOrder(Node<T> node) {
+      if (node == null) {
+         return;
+      } else {
+         postOrder(node.left);
+         postOrder(node.right);
+         System.out.print(node.key + " ");
+
+      }
+
+   }
+ ```
+ - **inOrder:**
+```java
+public void inOrder(Node<T> node) {
+      if (node == null) {
+         return;
+      } else {
+         inOrder(node.left);
+         System.out.print(node.key + " ");
+         inOrder(node.right);
+      }
+   }
+```
+ - **levelOrder:**
+```java
+ public void levelOrder(Node<T> node) {
+      if (node == null) {
+         return;
+      }
+
+      Queue<Node<T>> queue = new LinkedList<Node<T>>();
+      queue.add(node);
+
+      while (!queue.isEmpty()) {
+         Node<T> tempNode = queue.poll();
+         System.out.print(tempNode.key + " ");
+
+         if (tempNode.left != null) {
+            queue.add(tempNode.left);
+         }
+
+         if (tempNode.right != null) {
+            queue.add(tempNode.right);
+         }
+
+      }
+
+   }
+```
 
 ## Chapter 9
 ### Code
@@ -1291,6 +1422,20 @@ class BSTPrint {
 </details>
 
 ### Notes
+AVL tree is a BST with a height balance property and specific operations to rebalance the tree when a node is inserted or removed.
+
+**Height Balance**  if for any node, the heights of the node's left and right subtrees differ by only 0 or 1.
+**Balance Factor** is the left subtree height minus the right subtree height, which is 1, 0, or -1 in an AVL tree.
+
+Rotation Types:
+ - Left 
+ - Right
+ - Left-Right
+ - Right-Left
+
+Worst Case Runtime:
+  - Insertion: O(LogN)
+  - Removal: O(LogN)
 
 ## Chapter 10
 ### Code
@@ -1495,7 +1640,12 @@ public class HeapsortDemo {
 </details>
 
 ### Notes
-
+Heaps are a tree based structure that can be two types:
+ - **Max Heap:** A complete binary tree that maintains the simple property that a node's key is greater than or equal to the node's children's keys (Largest on top)
+   - insert
+   - remove 
+   - percolating: upward movement 
+ - **Min Heap:** A node's key is less than or equal to its children's keys. (Smallest on top)
 ## Chapter 11
 ### Code
 <details>
