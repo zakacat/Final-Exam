@@ -201,9 +201,64 @@ class LinkedList {
    }
 }
 ```
+```java
+public class StackAndQueueDemo {
+   public static void main(String[] args) {
+      int[] numbers = { 83, 27, 44, 55, 66, 16, 42, 73, 75 };
+      
+      // Initialize a new Stack and add numbers
+      Stack numStack = new Stack();
+      for (int number : numbers) {
+          numStack.push(number);
+      }
+
+      // Output stack
+      System.out.print("Stack after initial pushes:   ");
+      numStack.print();
+      
+      // Pop and print, push 99 and print, pop and print again
+      numStack.pop();
+      System.out.print("Stack after first pop:        ");
+      numStack.print();
+      numStack.push(99);
+      System.out.print("Stack after pushing 99:       ");
+      numStack.print();
+      numStack.pop();
+      System.out.print("Stack after second pop:       ");
+      numStack.print();
+      
+      // Print a blank line before the Queue demo
+      System.out.println();
+      
+      // Initialize a new Queue and add numbers
+      Queue numQueue = new Queue();
+      for (int number : numbers) {
+          numQueue.enqueue(number);
+      }
+
+      // Output queue
+      System.out.print("Queue after initial enqueues: ");
+      numQueue.print();
+      
+      // Dequeue 83 and print
+      numQueue.dequeue();
+      System.out.print("Queue after first dequeue:    ");
+      numQueue.print();
+      
+      // Enqueue 99 and print
+      numQueue.enqueue(99);
+      System.out.print("Queue after enqueueing 99:    ");
+      numQueue.print();
+      
+      // Dequeue 4 and print
+      numQueue.dequeue();
+      System.out.print("Queue after second dequeue:   ");
+      numQueue.print();
+   }
+}
+```
+
 </details>
-
-
 
 ### Notes
 Stack 
@@ -399,6 +454,68 @@ public class ChainingHashTable extends HashTable {
 }
 
 ```
+Demo
+```java
+public class HashTablesDemo {
+   public static void main(String[] args) {
+      String[] keys = {
+         "Los Angeles", "Houston", "Washington",
+         "Chicago", "San Francisco", "Dallas",
+         "Tokyo", "New York", "Vancouver"
+      };
+      String[] values = { 
+         "LAX", "IAH", "IAD",
+         "ORD", "SFO", "DAL",
+         "NRT", "JFK", "YVR"
+      };
+      
+      final int initialCapacity = 11;
+
+      // Initialize the four types of hash tables
+      HashTable[] tables = {
+         new ChainingHashTable(initialCapacity),
+         new LinearProbingHashTable(initialCapacity),
+         new QuadraticProbingHashTable(1, 1, initialCapacity),
+         new DoubleHashingHashTable(initialCapacity)
+      };
+      
+      // Add the same content to each hash table
+      for (int i = 0; i < keys.length; i++) {
+         // Insert the item into each hash table
+         for (int j = 0; j < tables.length; j++) {
+            tables[j].insert(keys[i], values[i]);
+         }
+      }
+      
+      // Print each table's buckets
+      String[] tableNames = {
+         "Chaining",
+         "Linear probing",
+         "Quadratic probing",
+         "Double hashing"
+      };
+      for (int j = 0; j < tables.length; j++) {
+         System.out.printf("%s: initial table:\n", tableNames[j]);
+         System.out.println(tables[j]);
+      }
+      
+      // Remove the 3 oldest keys from each hash table
+      for (int i = 0; i < 3; i++) {
+         for (int j = 0; j < tables.length; j++) {
+            tables[j].remove(keys[i]);
+         }
+      }
+      
+      // Print each table's buckets again
+      System.out.println();
+      for (int j = 0; j < tables.length; j++) {
+         System.out.printf("%s after removal:\n", tableNames[j]);
+         System.out.println(tables[j]);
+      }
+   }
+}
+
+```
 
 </details>
 
@@ -409,16 +526,16 @@ O(1) for searching or (inserting/removing)
 Modulus Calc: use A(b/c) c must ne the same as divisor in question
 
 Collision Strategies:
- - Chaining: 
+ - **Chaining:** 
    - each bucket has a list of items 
- - Open addressing: 
+ - **Open addressing:**
    - looks for an empty bucket elsewhere in the table
- - Linear Probing:  
+ - **Linear Probing:**  
    - starts at the key's mapped bucket, and then linearly searches subsequent buckets until an empty bucket is found.
- - Quadratic Probing:
+ - **Quadratic Probing:**
    - starts at the key's mapped bucket, and then quadratically searches subsequent buckets until an empty bucket is found
    - (H + (c1) + (c2 • i^2)) mod(table size)
- - Double Hashing:
+ - **Double Hashing:**
    - an open-addressing collision resolution technique that uses 2 different hash functions to compute bucket indices
    - (h1(key) + i • h2(key)) mod(table size)
 
@@ -766,6 +883,44 @@ class BSTPrint {
       for (int i = 0; i < lines.length; i++) {
          lines[i] = indent + lines[i];
       }
+   }
+}
+
+```
+Demo
+```java
+import java.util.Scanner;
+
+public class BinarySearchTreeDemo {
+   public static void main(String[] args) {
+      Scanner scnr = new Scanner(System.in);
+      BinarySearchTree tree = new BinarySearchTree();
+      
+      // Ask user for values to insert
+      System.out.print("Enter values to insert with spaces between: ");
+      String userValues = scnr.nextLine();
+      System.out.println();
+      
+      // Add each value to the tree
+      for (String value : userValues.split(" ")) {
+         int key = Integer.parseInt(value);
+         tree.insert(new Node(key));
+      }
+      
+      // Show the tree
+      System.out.println("Initial tree:");
+      System.out.println(BSTPrint.treeToString(tree.getRoot()));
+      System.out.println();
+      
+      // Ask the user for a value to remove
+      System.out.print("Enter value to remove: ");
+      String removeValueString = scnr.nextLine();
+      int removeValue = Integer.parseInt(removeValueString);
+      System.out.println();
+      
+      System.out.printf("Tree after removing %d:%n", removeValue);
+      tree.remove(removeValue);
+      System.out.println(BSTPrint.treeToString(tree.getRoot()));
    }
 }
 
@@ -1433,6 +1588,51 @@ class BSTPrint {
 }
 
 ```
+demo
+```java
+public class AVLTreeDemo {
+   public static void main(String[] args) {
+      // Create an empty AVLTree object.
+      AVLTree tree = new AVLTree();
+
+      // Insert some random-looking integers into the tree.
+      int[] keys = { 10, 20, 5, 22, 15, 47, 19, 3, 12, 18 };
+      for (int key : keys) {
+         Node node = new Node(key);
+         tree.insert(node);
+      }
+      
+      // Print the tree after all inserts are complete.
+      System.out.println("Tree after initial insertions:");
+      System.out.println(BSTPrint.treeToString(tree.getRoot()));
+      System.out.println();
+       
+      // Find and remove the node with the key value 12.
+      // This should cause a right rotation on node 10.
+      System.out.println("Remove node 12:");
+      tree.removeKey(12);
+      System.out.println(BSTPrint.treeToString(tree.getRoot()));
+      System.out.println();
+       
+      // Find and remove the node with the key value 20.
+      // This should cause its right child to shift up into
+      // the 20 node's position without any other reordering
+      // required.
+      System.out.println("Remove node 20:");
+      tree.removeKey(20);
+      System.out.println(BSTPrint.treeToString(tree.getRoot()));
+      System.out.println();
+       
+      // Attempt to remove a node with key 30, a value not in the tree.
+      System.out.println("Remove node 30 (should not be in tree):");
+      if (!tree.removeKey(30)) {
+         System.out.println("*** Key not found. Tree is not changed. ***");
+      }
+      System.out.println(BSTPrint.treeToString(tree.getRoot()));
+   }
+}
+
+```
 </details>
 
 ### Notes
@@ -1593,6 +1793,30 @@ class MaxHeap {
 }
 
 ```
+Max Heap demo
+```java
+import java.util.Arrays;
+
+public class MaxHeapDemo {
+   public static void main(String[] args) {
+      MaxHeap maxHeap = new MaxHeap();
+      int[] numbers = { 10, 2, 5, 18, 22 };
+      
+      // Add all numbers to the heap
+      for (int number : numbers) {
+         maxHeap.insert(number);
+         System.out.printf("   --> array: %s\n", maxHeap.getHeapArrayString());
+      }
+      
+      while (maxHeap.getHeapSize() > 0) {
+         int removedValue = maxHeap.remove();
+         System.out.printf("   --> removed %d, array: %s\n", removedValue, 
+            maxHeap.getHeapArrayString());
+      }
+   }
+}
+
+```
 Heap Sort
 ```java
 import java.util.Arrays;
@@ -1660,6 +1884,7 @@ Heaps are a tree based structure that can be two types:
    - remove 
    - percolating: upward movement 
  - **Min Heap:** A node's key is less than or equal to its children's keys. (Smallest on top)
+
 ## Chapter 11
 ### Code
 <details>
@@ -1949,6 +2174,113 @@ public class Set implements Iterable<Integer> {
    }
 }
 ```
+Set Demo
+```java
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+class EvenPredicate implements Predicate<Integer> {
+   public boolean test(Integer value) {
+      return (int)value % 2 == 0;
+   }
+}
+
+class Over50Predicate implements Predicate<Integer> {
+   public boolean test(Integer value) {
+      return value > 50;
+   }
+}
+
+class MapTimes10 implements Function<Integer, Integer> {
+   public Integer apply(Integer value) {
+      return value * 10;
+   }
+}
+
+class MapMod10 implements Function<Integer, Integer> {
+   public Integer apply(Integer value) {
+      return value % 10;
+   }
+}
+
+public class SetDemo {
+   private static void showSet(Set set, String setName) {
+      System.out.printf("%s: ", setName);
+      for (Integer element : set) {
+         System.out.print(element.toString() + " ");
+      }
+      System.out.println();
+   }
+
+   public static void main(String[] args) {
+      int[] setAElements = { 95, 64, 19, 67, -24, 90 };
+      int[] setBElements = { 67, 90, 67, 42, -84 };
+      
+      Set setA = new Set();
+      for (int element : setAElements) {
+         setA.add(element);
+      }
+      Set setB = new Set();
+      for (int element : setBElements) {
+         setB.add(element);
+      }
+      
+      // Display the 2 sets
+      showSet(setA, "Set A");
+      showSet(setB, "Set B");
+
+      // Perform union, intersection, and difference of 2 sets
+      showSet(setA.union(setB), "A union B");
+      showSet(setA.intersection(setB), "A intersect B");
+      showSet(setA.difference(setB), "A \\ B");
+      showSet(setB.difference(setA), "B \\ A");
+
+      // Perform various filter operations
+      EvenPredicate evenPredicate = new EvenPredicate();
+      showSet(setA.filter(evenPredicate), "Set A filtered for evens");
+      showSet(setB.filter(evenPredicate), "Set B filtered for evens");
+      Over50Predicate over50Predicate = new Over50Predicate();
+      showSet(setA.filter(over50Predicate), "Set A filtered for elements > 50");
+      showSet(setB.filter(over50Predicate), "Set B filtered for elements > 50");
+
+      // Perform various map operations
+      MapTimes10 mapTimes10 = new MapTimes10();
+      showSet(setA.map(mapTimes10), "Set A mapped * 10");
+      showSet(setB.map(mapTimes10), "Set B mapped * 10");
+      MapMod10 mapMod10 = new MapMod10();
+      showSet(setA.map(mapMod10), "Set A mapped % 10");
+      showSet(setB.map(mapMod10), "Set B mapped % 10");
+
+      // testing iterators
+      System.out.println("Output Set Content using Iterator implicitly: ");
+        for(Integer num : setA){
+            System.out.print( num + " ");
+        }
+
+        System.out.println();
+        System.out.println("Output Set Content using Iterator explicitly: ");
+        Iterator<Integer> itr = setA.iterator();
+
+        while(itr.hasNext()){
+            Integer num = itr.next();
+            //itr.remove();
+            System.out.print( num + " ");
+        }
+   }
+}
+```
 </details>
 
 ### Notes
+Set is a collection of distinct elements, only allows elements to be added that aren't already in the set
+
+Operations:
+ - **Union:** (X ∪ Y) contains every element from X, every element from Y, and no additional elements. 
+   - Ex: { 54, 19, 75 } ∪ { 75, 12 } = { 12, 19, 54, 75 }
+ - **Intersection:** (X ∩ Y) contains every element that is in both X and Y, and no additional elements
+   - Ex: { 54, 19, 75 } ∩ { 75, 12 } = { 75 }
+ - **Difference:** (X \ Y) contains every element that is in X but not in Y, and no additional elements
+   - Ex: { 54, 19, 75 } \ { 75, 12 } = { 54, 19 }
+
+**Static Set:** doesn't change after being constructed
+**Dynamic Set:** can change after being constructed
