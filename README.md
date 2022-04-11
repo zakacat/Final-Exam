@@ -523,7 +523,7 @@ public class HashTablesDemo {
 Hash table is a data structure that stores items by mapping ot hashing items to a location in an array. Usually 
 O(1) for searching or (inserting/removing)
 
-Modulus Calc: use A(b/c) c must ne the same as divisor in question
+Modulus Calc: use A(b/c) c must be the same as divisor in question
 
 Collision Strategies:
  - **Chaining:** 
