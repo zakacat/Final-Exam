@@ -936,24 +936,15 @@ BST Trees
  - Calc (ln x)/(ln 2)
 
 In a binary tree each node has up to two children (left child and right child) other definitions:
- - **Leaf:**
-   - A tree node with no children
- - **Internal Node:** 
-   - A node with at least one child.
- - **Parent:** 
-   - A node with a child is said to be that child's parent. 
- - **Ancestors:** 
-   - include the node's parent, the parent's parent, etc., up to the tree's root.
- - **Root:** 
-   - The one tree node with no parent (the "top" node)
- - **Edge:** 
-   - The link from a node to a child
- - **Depth:** 
-   - The number of edges on the path from the root to the node. The root node thus has depth 0.
- - **Level:** 
-   - All nodes with the same depth
- - **Height:** 
-   - The largest depth of any node. A tree with just one node has height 0.
+ - **Leaf:** A tree node with no children
+ - **Internal Node:**  A node with at least one child.
+ - **Parent:**  A node with a child is said to be that child's parent. 
+ - **Ancestors:** include the node's parent, the parent's parent, etc., up to the tree's root.
+ - **Root:**  The one tree node with no parent (the "top" node)
+ - **Edge:** The link from a node to a child
+ - **Depth:** The number of edges on the path from the root to the node. The root node thus has depth 0.
+ - **Level:** All nodes with the same depth
+ - **Height:**  The largest depth of any node. A tree with just one node has height 0.
 
  Special types of Binary Trees
   - **Full:** Every node contains 0 or 2 children.
